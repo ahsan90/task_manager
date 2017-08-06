@@ -1,0 +1,28 @@
+<% if @tasks.empty? %>
+    <h2>There is no task available currently</h2>
+<% else %>
+<h2>Task list</h2>
+<div>
+<table class="table table-responsive table-hover">
+  <thead>
+    <tr class = "name">
+      <th>Names</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do | task| %>
+      <tr>
+        <td>
+          <strong><%= task.name %></strong>
+        </td>
+        <td><%= link_to 'Click', task, :class => 'btn btn-info' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div><%= will_paginate @tasks, previous_label: h("<<"), next_label: h(">>") %></div>
+<% end %>
+
+<%= link_to 'Create a New Task', new_task_path ,:class => 'btn btn-primary'%>

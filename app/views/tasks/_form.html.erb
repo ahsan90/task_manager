@@ -1,0 +1,30 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="">
+      <div>
+      <% task.errors.full_messages.each do |message| %>
+        <p class="alert alert-danger"><%= message %></p>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+      <div class="field form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, rows: 10, :class=>"form-control has-error", id: :task_name, placeholder: 'Enter a Name' %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, :class=>"form-control has-error", id: :task_description,placeholder: 'Write a description' %>
+      </div>
+
+      <ul class="list-inline">
+        <% if task.new_record? %>
+        <li><%= form.submit 'Create', :class=>"btn btn-success" %></li>
+        <li><%= link_to 'Cancel', tasks_path, :class => "btn btn-default" %></li>
+        <% else %>
+        <li><%= form.submit 'Update', :class=>"btn btn-success" %></li>
+        <li><%= button_tag "Reset", type: :reset, :class=>"btn btn-default" %>
+        <% end %>
+     </ul>
+<% end %>

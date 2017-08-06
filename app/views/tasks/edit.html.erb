@@ -1,0 +1,10 @@
+<div class="col-xs-8 col-xs-offset-2">
+  <ul class="list-inline pull-right">
+    <li> <%= link_to 'Show the task', @task, :class=>'btn btn-default'%></li>
+    <li><%= link_to 'Back to tasks list', tasks_path, :class=>'btn btn-default'%></li>
+  </ul>
+  <h1>Editing the task</h1>
+  <div class="row">
+    <%= render 'form', task: @task %>
+  </div>
+</div>
